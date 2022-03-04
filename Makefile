@@ -5,40 +5,40 @@
 #                                                     +:+ +:+         +:+      #
 #    By: hefernan <hefernan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/08/17 15:53:44 by hefernan          #+#    #+#              #
-#    Updated: 2022/02/21 11:33:01 by hefernan         ###   ########.fr        #
+#    Created: 2021/11/02 02:05:36 by hefernan          #+#    #+#              #
+#    Updated: 2022/03/04 12:00:15 by hefernan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = pipex
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Werror -Wextra
 
-SRCS =	ft_printf.c \
-		ft_printdeuxfreres.c \
-		ft_strdup.c \
-		ft_strlen.c \
-		ft_itoa.c \
-		ft_itoa_base.c \
+SRCS =		pipex.c \
+			childs_paths.c \
+			free.c \
+			msg_err.c \
+			ft_strncmp.c \
+			ft_strdup.c \
+			ft_split.c \
+			ft_strjoin.c \
+			ft_strlen.c \
 
-OBJ =	ft_printf.o \
-		ft_printdeuxfreres.o \
-		ft_strdup.o \
-		ft_strlen.o \
-		ft_itoa.o \
-		ft_itoa_base.o \
+
+OBJ =	$(SRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME):
-	gcc $(CFLAGS) -c $(SRCS)
-	ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
+%.o: %.c
+	$(CC) -o $@ -c $< $(CFLAGS)
+
+$(NAME): $(OBJ)
+	gcc -o $(NAME) $(CFLAGS) $(OBJ)
 
 clean:
 	rm -f $(OBJ)
 
-fclean:	clean
+fclean: clean
 	rm -f $(NAME)
 
-re:	fclean all
+re: fclean all
