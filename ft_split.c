@@ -12,7 +12,7 @@
 
 #include "pipex.h"
 
-char		*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*str;
 	size_t	i;
@@ -36,7 +36,7 @@ char		*ft_substr(char const *s, unsigned int start, size_t len)
 	return (str);
 }
 
-static	int			ft_countwords(char const *s, char c)
+static	int	ft_countwords(char const *s, char c)
 {
 	unsigned int	i;
 	int				count;
@@ -57,7 +57,7 @@ static	int			ft_countwords(char const *s, char c)
 	return (count);
 }
 
-static char			**ft_tab(char *s, char c, char **tab, int words)
+static char	**ft_tab(char *s, char c, char **tab, int words)
 {
 	int				k;
 	int				f;
