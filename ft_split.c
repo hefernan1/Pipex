@@ -22,7 +22,8 @@ char		*ft_substr(char const *s, unsigned int start, size_t len)
 		return (NULL);
 	if (start >= ft_strlen(s))
 		len = 0;
-	if (!(str = malloc(sizeof(char) * (len + 1))))
+	str = malloc(sizeof(char) * (len + 1));
+	if (!str)
 		return (NULL);
 	while (s[start] && len)
 	{
@@ -73,7 +74,8 @@ static char			**ft_tab(char *s, char c, char **tab, int words)
 		j = i;
 		while (s[i] != c && s[i] != '\0')
 			i++;
-		if (!(tab[k] = ft_substr(s, j, i - j)))
+		tab[k] = ft_substr(s, j, i - j);
+		if (!tab)
 		{
 			while (f < k)
 				free(tab[f++]);
@@ -85,18 +87,20 @@ static char			**ft_tab(char *s, char c, char **tab, int words)
 	return (tab);
 }
 
-char				**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
-	char			**tab;
-	int				words;
+	char	**tab;
+	int		words;
 
 	tab = NULL;
 	if (!s)
 		return (NULL);
 	words = ft_countwords((char *)s, c);
-	if (!(tab = malloc(sizeof(char *) * (words + 1))))
+	tab = malloc(sizeof(char *) * (words + 1));
+	if (!tab)
 		return (NULL);
-	if (!(tab = ft_tab((char *)s, c, tab, words)))
+	tab = ft_tab((char *)s, c, tab, words);
+	if (!tab)
 	{
 		free(tab);
 		tab = NULL;

@@ -12,7 +12,7 @@
 
 #include "pipex.h"
 
-char		*ft_strdup(const char *s1)
+char	*ft_strdup(const char *s1)
 {
 	size_t	i;
 	size_t	len;
@@ -20,7 +20,8 @@ char		*ft_strdup(const char *s1)
 
 	i = 0;
 	len = ft_strlen(s1);
-	if (!(str = malloc(sizeof(char) * (len + 1))))
+	str = malloc(sizeof(char) * (len + 1));
+	if (!str)
 		return (NULL);
 	while (s1[i])
 	{

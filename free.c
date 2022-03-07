@@ -12,33 +12,33 @@
 
 #include "pipex.h"
 
-void    free_parent(t_pipex *pipex)
+void	free_parent(t_pipex *pipex)
 {
-    int i;
+	int		i;
 
-    i = 0;
-    close(pipex->infile);
-    close(pipex->outfile);
-    while (pipex->cmd_paths[i])
-    {
-        free(pipex->cmd_paths[i]);
-        i++;
-    }
-    free(pipex->cmd_paths);
+	i = 0;
+	close(pipex->infile);
+	close(pipex->outfile);
+	while (pipex->cmd_paths[i])
+	{
+		free(pipex->cmd_paths[i]);
+		i++;
+	}
+	free(pipex->cmd_paths);
 }
 
-void    free_childs(t_pipex *pipex)
+void	free_childs(t_pipex *pipex)
 {
-    int i;
+	int		i;
 
-    i = 0;
-    while (pipex->cmd_args[i])
-    {
-        free(pipex->cmd_args[i]);
-        i++;
-    }
-    free(pipex->cmd_args);
-    free(pipex->cmd);
+	i = 0;
+	while (pipex->cmd_args[i])
+	{
+		free(pipex->cmd_args[i]);
+		i++;
+	}
+	free(pipex->cmd_args);
+	free(pipex->cmd);
 }
 
 void	close_pipes(t_pipex *pipex)

@@ -12,22 +12,22 @@
 
 #include "pipex.h"
 
-static  char    *get_cmd(char **paths, char *cmd)
+static	char	*get_cmd(char **paths, char *cmd)
 {
-    char *tmp;
-    char *command;
+	char		*tmp;
+	char		*command;
 
-    while (*paths)
-    {
-        tmp = ft_strjoin(*paths, "/");
-        command = ft_strjoin(tmp, cmd);
-        free(tmp);
-        if (access(command, 0) == 0)
-            return (command);
-        free(command);
-        paths++;
-    }
-    return (NULL);
+	while (*paths)
+	{
+		tmp = ft_strjoin(*paths, "/");
+		command = ft_strjoin(tmp, cmd);
+		free(tmp);
+		if (access(command, 0) == 0)
+			return (command);
+		free(command);
+		paths++;
+	}
+	return (NULL);
 }
 
 char	*find_path(char **envp)
@@ -53,7 +53,7 @@ void	first_child(t_pipex pipex, char *argv[], char *envp[])
 	execve(pipex.cmd, pipex.cmd_args, envp);
 }
 
-void    second_child(t_pipex pipex, char *argv[], char *envp[])
+void	second_child(t_pipex pipex, char *argv[], char *envp[])
 {
 	dup2(pipex.fd[0], 0);
 	close(pipex.fd[1]);

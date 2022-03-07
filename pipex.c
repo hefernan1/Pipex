@@ -17,7 +17,7 @@ int	main(int argc, char *argv[], char *envp[])
 	t_pipex	pipex;
 
 	if (argc != 5)
-		return(aff_msg(ARG_ERROR));
+		return (aff_msg(ARG_ERROR));
 	pipex.infile = open(argv[1], O_RDONLY);
 	if (pipex.infile < 0)
 		error_msg(INFILE_ERROR);
