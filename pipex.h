@@ -41,6 +41,14 @@ typedef struct s_pipex
 	char	*cmd;
 }t_pipex;
 
+typedef struct s_split
+{
+	int				k;
+	int				f;
+	unsigned int	i;
+	unsigned int	j;
+}t_split;
+
 void	first_child(t_pipex pipex, char *argv[], char *envp[]);
 void	second_child(t_pipex pipex, char *argv[], char *envp[]);
 void	free_parent(t_pipex *pipex);

@@ -59,31 +59,28 @@ static	int	ft_countwords(char const *s, char c)
 
 static char	**ft_tab(char *s, char c, char **tab, int words)
 {
-	int				k;
-	int				f;
-	unsigned int	i;
-	unsigned int	j;
+	t_split	var;
 
-	k = 0;
-	i = 0;
-	f = 0;
-	while (k < words)
+	var.k = 0;
+	var.i = 0;
+	var.f = 0;
+	while (var.k < words)
 	{
-		while (s[i] == c)
-			i++;
-		j = i;
-		while (s[i] != c && s[i] != '\0')
-			i++;
-		tab[k] = ft_substr(s, j, i - j);
+		while (s[var.i] == c)
+			var.i++;
+		var.j = var.i;
+		while (s[var.i] != c && s[var.i] != '\0')
+			var.i++;
+		tab[var.k] = ft_substr(s, var.j, var.i - var.j);
 		if (!tab)
 		{
-			while (f < k)
-				free(tab[f++]);
+			while (var.f < var.k)
+				free(tab[var.f++]);
 			return (NULL);
 		}
-		k++;
+		var.k++;
 	}
-	tab[k] = NULL;
+	tab[var.k] = NULL;
 	return (tab);
 }
 
